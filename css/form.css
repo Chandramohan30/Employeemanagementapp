@@ -1,0 +1,64 @@
+.formcontainer
+{
+    
+    display: block;
+    text-align: center;
+    width: auto;
+    padding: 20px;
+}
+.formcontainer button
+{
+    color: white;
+    background-color:green;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.formcontainer label{
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+}
+.formcontainer input,textarea
+{
+    margin-bottom: 20px;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 10px;
+    
+}
+
+.formcontainer button
+{
+    font-size: 20px;
+    padding: 3px;
+    margin: 5px;
+    width: 50%;
+}
+h1{
+    text-align: center;
+    background: #fff8e7;
+    width: 100%;
+    padding: 10px;
+
+}
+.header a
+{
+    position: relative;
+    bottom: 65px;
+    padding: 10px;
+    border-radius: 10px;
+   font-size: 20px;
+    color:#ff9800;
+    text-decoration: none;
+    margin: 10px;
+    width: 300px;
+}
+select {
+    padding: 5px;
+    font-size: 20px;
+    width: 50%;
+    border-radius: 10px;
+}

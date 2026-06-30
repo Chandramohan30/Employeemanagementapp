@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Employee List
+        link(rel="stylesheet", href="/list.css")
+        
+
+    body
+        div.header
+           h1 Employee List
+           a(href="") Home 
+           a(href="/createemployee") Add Employee
+        table.emplist
+            tr
+              th  Name
+              th  Email
+              th  Phone
+              th  Gender
+              th  DateofBirth
+              th  Status
+              th  Actions
+            each emp in employeedata
+                tr.listitems
+                    td= emp.empname
+                    td= emp.empemail
+                    td=emp.empphone
+                    td=emp.empgender
+                    td=new Date(emp.empdateofbirth).toISOString().split('T')[0]
+                    td=emp.status
+                    td
+                     a(href="/edit/" + emp.empid)
+                       button.edit Edit
+                     a(href="/delete/" + emp.empid)
+                       button.delete Delete
+                     
