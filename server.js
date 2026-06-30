@@ -102,7 +102,6 @@ app.post('/update/:id', async (req, res) => {
         employee.empgender=req.body.empgender;
         employee.empdateofbirth=req.body.empdateofbirth;
         employee.status = req.body.status;
-
         await employee.save();
         res.redirect("/")
     } 
