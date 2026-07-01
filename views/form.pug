@@ -66,3 +66,8 @@ html(lang="en")
          input(type="hidden", name="status", value="Inactive")
         br
         button(type="submit")= employee ? "Update" : "Add"
+    script.
+      if expired 
+        alert("Session Expired. Please Log in again")
+
+    

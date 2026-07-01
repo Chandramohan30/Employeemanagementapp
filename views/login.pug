@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Login
+        link(rel="stylesheet", href="/login.css")
+    body 
+      form(action="/login",method="POST")
+        h1 Login
+        label Enter the Username
+        br
+        input(type="text",name="empname",required)
+        br
+        label Enter the Password
+        br
+        input(type="password",name="emppassword",required)
+        br
+        button(type="submit") Login
+    if expired
+     script.
+        alert("Session Expired. Please Log in again")
+    if notauthorized
+     script.
+        alert("Invalid user credentials")
