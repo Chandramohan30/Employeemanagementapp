@@ -1,37 +1,156 @@
 doctype html
 html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Employee List
-        link(rel="stylesheet", href="/list.css")
-        
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Employee List
+    link(rel="stylesheet", href="/list.css")
 
-    body
-        div.header
-           h1 Employee List
-           a(href="") Home 
-           a(href="/createemployee") Add Employee
-        table.emplist
-            tr
-              th  Name
-              th  Email
-              th  Phone
-              th  Gender
-              th  DateofBirth
-              th  Status
-              th  Actions
-            each emp in employeedata
-                tr.listitems
-                    td= emp.empname
-                    td= emp.empemail
-                    td=emp.empphone
-                    td=emp.empgender
-                    td=new Date(emp.empdateofbirth).toISOString().split('T')[0]
-                    td=emp.status
-                    td
-                     a(href="/edit/" + emp.empid)
-                       button.edit Edit
-                     a(href="/delete/" + emp.empid)
-                       button.delete Delete
-                     
+
+  body
+
+    .header
+      h1 Employee List
+      button#addBtn Add Employee
+      
+     
+    table.emplist
+      tr
+        th Name
+        th Email
+        th Phone
+        th Gender
+        th Date of Birth
+        th Status
+        th Actions
+
+      each emp in employeedata
+        tr
+          td= emp.empname
+          td= emp.empemail
+          td= emp.empphone
+          td= emp.empgender
+          td= new Date(emp.empdateofbirth).toISOString().split('T')[0]
+          td= emp.status
+
+          td
+            button.edit(
+              data-id=emp.empid
+              data-name=emp.empname
+              data-email=emp.empemail
+              data-phone=emp.empphone
+              data-gender=emp.empgender
+              data-dob=new Date(emp.empdateofbirth).toISOString().split('T')[0]
+              data-status=emp.status
+            ) Edit
+
+            a(href="/delete/" + emp.empid)
+              button.delete Delete
+
+    
+    #employeeModal.modal
+      .modal-content
+
+        span.close#closeBtn ×
+
+        h2#modalTitle Add Employee
+
+        form#employeeForm(method="POST")
+
+          label Employee Name
+          input(type="text" name="empname" id="empname" required)
+          br
+          label Employee Phone
+          input(type="text" name="empphone" id="empphone" required)
+          br
+          label Employee Email
+          input(type="email" name="empemail" id="empemail" required)
+          br
+          label Employee DOB
+          input(type="date" name="empdateofbirth" id="empdateofbirth")
+          br
+          label Gender
+          br
+          input(type="radio" name="empgender" value="Male" id="male")
+          label(for="male") Male
+          br
+          input(type="radio" name="empgender" value="Female" id="female")
+          label(for="female") Female
+          br
+          br
+
+          label Status
+          select(name="status" id="status")
+            option(value="Active") Active
+            option(value="Inactive") Inactive
+
+          br
+          br
+
+          button(type="submit") Save
+
+    script.
+
+      const modal = document.getElementById("employeeModal");
+      const addBtn = document.getElementById("addBtn");
+      const closeBtn = document.getElementById("closeBtn");
+      const form = document.getElementById("employeeForm");
+
+      addBtn.onclick = function(){
+
+        document.getElementById("modalTitle").innerText = "Add Employee";
+
+        form.reset();
+
+        form.action="/add";
+
+        modal.style.display="flex";
+
+      };
+
+      closeBtn.onclick=function(){
+
+        modal.style.display="none";
+
+      };
+
+      window.onclick=function(e){
+
+        if(e.target===modal){
+
+          modal.style.display="none";
+
+        }
+
+      };
+
+      document.querySelectorAll(".edit").forEach(function(btn){
+
+        btn.onclick=function(){
+
+          document.getElementById("modalTitle").innerText="Edit Employee";
+
+          document.getElementById("empname").value=this.dataset.name;
+
+          document.getElementById("empphone").value=this.dataset.phone;
+
+          document.getElementById("empemail").value=this.dataset.email;
+
+          document.getElementById("empdateofbirth").value=this.dataset.dob;
+
+          if(this.dataset.gender==="Male"){
+            document.getElementById("male").checked=true;
+          }else{
+            document.getElementById("female").checked=true;
+          }
+
+          document.getElementById("status").value=this.dataset.status;
+
+          form.action="/update/"+this.dataset.id;
+
+          modal.style.display="flex";
+
+        };
+
+      });
+
