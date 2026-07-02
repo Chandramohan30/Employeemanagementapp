@@ -116,6 +116,7 @@
 
 
 
+
 .emplist th {
 
     padding: 15px;
@@ -231,7 +232,7 @@
 
     border: none;
 
-    padding: 8px 20px;
+    padding: 10px;
 
     border-radius: 7px;
 
@@ -258,12 +259,26 @@
 
     border: none;
 
-    padding: 8px 20px;
+    padding: 10px;
 
     border-radius: 7px;
 
     cursor: pointer;
 
+}
+.assertbutton
+{
+     background:purple;
+
+    color: white;
+
+    border: none;
+
+    padding: 10px;
+
+    border-radius: 7px;
+
+    cursor: pointer;
 }
 
 

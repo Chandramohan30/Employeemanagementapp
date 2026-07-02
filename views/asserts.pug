@@ -1,0 +1,57 @@
+doctype html
+html
+  head
+    title Assets List
+    style.
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+
+      th {
+        background-color: purple;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #ddd;
+      }
+
+      .json-box {
+        white-space: pre-wrap;
+        font-size: 12px;
+        background: #f9f9f9;
+        padding: 5px;
+        border-radius: 4px;
+      }
+
+  body
+    h2 Employee Assets List
+
+    table
+      thead
+        tr
+          th Employee ID
+          th Assets 
+
+      tbody
+        if employeeassertdata && employeeassertdata.asserts
+           each item in employeeassertdata.asserts
+             tr
+               td= employeeassertdata.employee.empname
+               td= item
+        else
+             tr
+               td(colspan="2") No Asserts found

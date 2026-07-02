@@ -12,12 +12,14 @@ const sequelize = new Sequelize({
 });
 
 async function connectDatabase() {
-    try {
+    try
+    {
         await sequelize.authenticate();
         await sequelize.sync({ alter: true })
         console.log('Db connection established Successfully');
     }
-    catch (err) {
+    catch (err) 
+    {
         console.log(err);
     }
 }

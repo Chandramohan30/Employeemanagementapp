@@ -1,22 +1,21 @@
-const {createClient}=require('redis')
-const redisclient=createClient({
-    url:"redis://localhost:6379"
+const { createClient } = require('redis')
+const redisclient = createClient({
+    url: "redis://localhost:6379"
 });
 
-redisclient.on("connect",()=>{
+redisclient.on("connect", () => {
     console.log("Redis server connected")
 })
 
-redisclient.on("error",()=>{
+redisclient.on("error", () => {
     console.log("Redis server Not connected")
 })
 
-async function connectredis()
-{
+async function connectredis() {
     await redisclient.connect()
 }
 
-module.exports={
+module.exports = {
     redisclient,
     connectredis
 }

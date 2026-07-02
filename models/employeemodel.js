@@ -13,8 +13,8 @@ const employeemodel = sequelize.define(
             type: DataTypes.STRING,
             allowNull: false
         },
-        empdateofbirth:{
-            type:DataTypes.DATE
+        empdateofbirth: {
+            type: DataTypes.DATE
         },
         empemail: {
             type: DataTypes.STRING
@@ -24,7 +24,7 @@ const employeemodel = sequelize.define(
         },
         empgender:
         {
-            type:DataTypes.STRING
+            type: DataTypes.STRING
         },
         status: {
             type: DataTypes.ENUM("Active", "Inactive"),
